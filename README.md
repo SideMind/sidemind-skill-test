@@ -32,6 +32,12 @@
 $ pnpm install
 ```
 
+## Config
+
+Don't forget to configure the following environment:
+
+ - DATABASE_URL
+
 ## Running the app
 
 ```bash
