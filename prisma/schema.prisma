@@ -6,3 +6,13 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Task {
+  id String @default(uuid()) @id
+  name String @unique
+  dateInit DateTime @default(now())
+  dateLimit DateTime?
+  status String @default(dbgenerated("Todo"))
+
+  @@map("tasks")
+}
