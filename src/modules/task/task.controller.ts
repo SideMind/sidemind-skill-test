@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { TaskDTO } from './task.dto';
+import { isObject } from 'class-validator';
 
 @Controller('task')
 export class TaskController {
@@ -31,6 +32,9 @@ export class TaskController {
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    return this.taskService.delete(id);
+    const response = await this.taskService.delete(id);
+    if (isObject(response)) {
+      return 'Task deleted successfully';
+    }
   }
 }
