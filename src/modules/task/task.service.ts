@@ -6,7 +6,7 @@ import { PrismaService } from './../database/prisma.service';
 export class TaskService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: TaskDTO) {
+  async create(data: TaskDTO): Promise<TaskDTO> {
     const taskExists = await this.prisma.task.findUnique({
       where: {
         name: data.name,
@@ -23,11 +23,11 @@ export class TaskService {
     return task;
   }
 
-  async findAll() {
+  async findAll(): Promise<TaskDTO[]> {
     return this.prisma.task.findMany();
   }
 
-  async update(id: string, data: TaskDTO) {
+  async update(id: string, data: TaskDTO): Promise<TaskDTO> {
     const taskExists = await this.prisma.task.findUnique({
       where: {
         id,
@@ -59,7 +59,7 @@ export class TaskService {
     return task;
   }
 
-  async delete(id: string) {
+  async delete(id: string): Promise<TaskDTO> {
     const taskExists = await this.prisma.task.findUnique({
       where: {
         id,

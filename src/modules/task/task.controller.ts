@@ -31,7 +31,7 @@ export class TaskController {
 
   @Get()
   @ApiOperation({ summary: 'Return all tasks' })
-  async findAll() {
+  async findAll(): Promise<Task[]> {
     return this.taskService.findAll();
   }
 
@@ -42,13 +42,13 @@ export class TaskController {
     description: 'The updated record',
     type: Task,
   })
-  async update(@Param('id') id: string, @Body() data: TaskDTO) {
+  async update(@Param('id') id: string, @Body() data: Task): Promise<Task> {
     return this.taskService.update(id, data);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete a task by ID' })
-  async delete(@Param('id') id: string) {
+  async delete(@Param('id') id: string): Promise<string> {
     const response = await this.taskService.delete(id);
     if (isObject(response)) {
       return 'Task deleted successfully';
