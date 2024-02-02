@@ -56,13 +56,16 @@ $ pnpm run start:prod
 ```bash
 # unit tests
 $ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
 ```
+
+## Package dependencies
+
+Chose to use the following dependencies:
+  - Prisma for ORM support
+  - Nest CLI for resources simple command creation
+  - class-validator and class-transformer for validations
+  - Jest for testing
+  - Nest updated version (^10.3.1) to work better with Jest
 
 ## Support
 
